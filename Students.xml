@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <university>
-    <student ID="20200753">
-        <address>cairo</address>
-        <firstName>estkana</firstName>
-        <gender>male</gender>
-        <gpa>4.0</gpa>
-        <lastName>mohamed</lastName>
-        <level>4</level>
-    </student>
     <student ID="654321">
         <address>maday</address>
         <firstName>fady</firstName>
@@ -30,6 +22,14 @@
         <gender>gender</gender>
         <gpa>3.21</gpa>
         <lastName>lastname</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200159">
+        <address>Cario</address>
+        <firstName>Hussein</firstName>
+        <gender>Male</gender>
+        <gpa>3.14</gpa>
+        <lastName>El-Morsy</lastName>
         <level>4</level>
     </student>
 </university>
