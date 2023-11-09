@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .response-container {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+            word-wrap: break-word;
+        }
+
+        .success {
+            color: #008000;
+        }
+
+        .error {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+<h1>Student Management System</h1>
+
+<button onclick="getAllStudents()">Get All Students</button>
+<div class="response-container" id="allStudentsResponse"></div>
+
+<label for="studentId">Student ID:</label>
+<input type="text" id="studentId" placeholder="Enter ID"><br>
+<button onclick="getStudentById()">Get Student by ID</button>
+<div class="response-container" id="studentByIdResponse"></div>
+
+<label for="gpa">GPA:</label>
+<input type="number" step="0.01" id="gpa" placeholder="Enter GPA"><br>
+<button onclick="getStudentsByGPA()">Get Students by GPA</button>
+<div class="response-container" id="studentsByGPAResponse"></div>
+
+<label for="firstName">First Name:</label>
+<input type="text" id="firstName" placeholder="Enter First Name"><br>
+<button onclick="getStudentsByFirstName()">Get Students by First Name</button>
+<div class="response-container" id="studentsByFirstNameResponse"></div>
+
+<label for="deleteId">Student ID to Delete:</label>
+<input type="text" id="deleteId" placeholder="Enter ID"><br>
+<button onclick="deleteStudent()">Delete Student</button>
+<div class="response-container" id="deleteStudentResponse"></div>
+
+<hr>
+
+<h2>Add New Student</h2>
+<label for="newStudentId">ID:</label>
+<input type="text" id="newStudentId" placeholder="Enter ID"><br>
+<label for="newStudentFirstName">First Name:</label>
+<input type="text" id="newStudentFirstName" placeholder="Enter First Name"><br>
+<label for="newStudentLastName">Last Name:</label>
+<input type="text" id="newStudentLastName" placeholder="Enter Last Name"><br>
+<label for="newStudentGender">Gender:</label>
+<input type="text" id="newStudentGender" placeholder="Enter Gender"><br>
+<label for="newStudentLevel">Level:</label>
+<input type="text" id="newStudentLevel" placeholder="Enter Level"><br>
+<label for="newStudentGPA">GPA:</label>
+<input type="number" step="0.01" id="newStudentGPA" placeholder="Enter GPA"><br>
+<label for="newStudentAddress">Address:</label>
+<input type="text" id="newStudentAddress" placeholder="Enter Address"><br>
+<button onclick="addNewStudent()">Add New Student</button>
+<div class="response-container" id="addStudentResponse"></div>
+
+<script>
+    const baseURL = 'http://localhost:8080/students';
+
+    function makeRequest(url, method, body = null) {
+        return fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body ? JSON.stringify(body) : null
+        })
+            .then(response => response.json())
+            .catch(error => console.error('Error:', error));
+    }
+
+    function formatAndDisplayResponse(response, containerId, successMessage, errorMessage) {
+        const responseContainer = document.getElementById(containerId);
+        responseContainer.innerHTML = '';
+
+        if (Array.isArray(response)) {
+            response.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('response-container');
+                Object.keys(item).forEach(key => {
+                    const propertyDiv = document.createElement('div');
+                    propertyDiv.textContent = `${key}: ${item[key]}`;
+                    itemDiv.appendChild(propertyDiv);
+                });
+                responseContainer.appendChild(itemDiv);
+                responseContainer.innerHTML += '<hr>';
+            });
+        } else {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('response-container');
+            Object.keys(response).forEach(key => {
+                const propertyDiv = document.createElement('div');
+                propertyDiv.textContent = `${key}: ${response[key]}`;
+                itemDiv.appendChild(propertyDiv);
+            });
+            responseContainer.appendChild(itemDiv);
+        }
+
+        if (successMessage && response && !response.error) {
+            responseContainer.classList.add('success');
+            responseContainer.innerHTML += `<p>${successMessage}</p>`;
+        } else if (errorMessage && response && response.error) {
+            responseContainer.classList.add('error');
+            responseContainer.innerHTML += `<p>${errorMessage}</p>`;
+        }
+    }
+
+    function getAllStudents() {
+        makeRequest(baseURL, 'GET')
+            .then(data => formatAndDisplayResponse(data, 'allStudentsResponse', 'All students retrieved successfully', 'Error retrieving students'));
+    }
+
+    function getStudentById() {
+        const studentId = document.getElementById('studentId').value;
+        makeRequest(`${baseURL}/getByID/${studentId}`, 'GET')
+            .then(data => formatAndDisplayResponse(data, 'studentByIdResponse', 'Student retrieved successfully', 'Error retrieving student'));
+    }
+
+    function getStudentsByGPA() {
+        const gpa = document.getElementById('gpa').value;
+        makeRequest(`${baseURL}/getByGPA/${gpa}`, 'GET')
+            .then(data => formatAndDisplayResponse(data, 'studentsByGPAResponse', 'Students retrieved successfully', 'Error retrieving students'));
+    }
+
+    function getStudentsByFirstName() {
+        const firstName = document.getElementById('firstName').value;
+        makeRequest(`${baseURL}/getByFirstName/${firstName}`, 'GET')
+            .then(data => formatAndDisplayResponse(data, 'studentsByFirstNameResponse', 'Students retrieved successfully', 'Error retrieving students'));
+    }
+
+    function deleteStudent() {
+        const deleteId = document.getElementById('deleteId').value;
+        makeRequest(`${baseURL}/${deleteId}`, 'DELETE')
+            .then(data => formatAndDisplayResponse(data, 'deleteStudentResponse', 'Student deleted successfully', 'Error deleting student'));
+    }
+
+    function addNewStudent() {
+        const newStudentId = document.getElementById('newStudentId').value;
+        const newStudentFirstName = document.getElementById('newStudentFirstName').value;
+        const newStudentLastName = document.getElementById('newStudentLastName').value;
+        const newStudentGender = document.getElementById('newStudentGender').value;
+        const newStudentLevel = document.getElementById('newStudentLevel').value;
+        const newStudentGPA = document.getElementById('newStudentGPA').value;
+        const newStudentAddress = document.getElementById('newStudentAddress').value;
+
+        const newStudent = {
+            id: newStudentId,
+            firstName: newStudentFirstName,
+            lastName: newStudentLastName,
+            gender: newStudentGender,
+            level: newStudentLevel,
+            gpa: newStudentGPA,
+            address: newStudentAddress
+        };
+
+        makeRequest(`${baseURL}/addStudents`, 'POST', [newStudent])
+            .then(data => formatAndDisplayResponse(data, 'addStudentResponse', 'Student added successfully', 'Error adding student'));
+    }
+</script>
+</body>
+</html>

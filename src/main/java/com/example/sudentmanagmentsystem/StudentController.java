@@ -1,5 +1,6 @@
 package com.example.sudentmanagmentsystem;
 
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/students")
+@CrossOrigin(origins = "http://localhost:63342")
 public class StudentController {
 
     private final StudentService studentService;
@@ -36,10 +38,7 @@ public class StudentController {
         return studentService.getStudentsByFirstName(firstName);
     }
 
-    //    @PostMapping("/addStudent")
-//    public String addStudent(@RequestBody Student student) {
-//        return (studentService.addStudent(student)) ? "Added Successfully" : "Not added there is a student with this ID";
-//    }
+
     @PostMapping("/addStudents")
     public ResponseEntity<String> addMultipleStudents(@RequestBody List<Student> students) {
         for (Student student : students) {
