@@ -8,12 +8,21 @@
         <lastName>mohamed</lastName>
         <level>4</level>
     </student>
-    <student ID="20200111">
-        <firstName>sss</firstName>
+    <student ID="654321">
+        <address>maday</address>
+        <firstName>fady</firstName>
         <gender>male</gender>
-        <gpa>3.45</gpa>
-        <lastName>das</lastName>
+        <gpa>4.0</gpa>
+        <lastName>shady</lastName>
         <level>4</level>
+    </student>
+    <student ID="1234">
+        <address>zayed</address>
+        <firstName>shady</firstName>
+        <gender>female</gender>
+        <gpa>2.3</gpa>
+        <lastName>fady</lastName>
+        <level>3</level>
     </student>
     <student ID="20200">
         <address>address</address>
@@ -21,21 +30,6 @@
         <gender>gender</gender>
         <gpa>3.21</gpa>
         <lastName>lastname</lastName>
-        <level>4</level>
-    </student>
-    <student ID="2020002">
-        <firstName>nasr</firstName>
-        <gender>female</gender>
-        <gpa>1.1</gpa>
-        <lastName>tany</lastName>
-        <level>4</level>
-    </student>
-    <student ID="123456">
-        <address>giza</address>
-        <firstName>mahmoud</firstName>
-        <gender>male</gender>
-        <gpa>1.0</gpa>
-        <lastName>nader</lastName>
         <level>4</level>
     </student>
 </university>

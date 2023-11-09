@@ -81,7 +81,7 @@
 <label for="deleteId">Student ID to Delete:</label>
 <input type="text" id="deleteId" placeholder="Enter ID"><br>
 <button onclick="deleteStudent()">Delete Student</button>
-<div class="response-container" id="deleteStudentResponse"></div>
+<div class="response-container" id="deleteStudentResponse">""</div>
 
 <hr>
 
@@ -103,6 +103,7 @@
 <button onclick="addNewStudent()">Add New Student</button>
 <div class="response-container" id="addStudentResponse"></div>
 
+
 <script>
     const baseURL = 'http://localhost:8080/students';
 
@@ -123,34 +124,41 @@
         responseContainer.innerHTML = '';
 
         if (Array.isArray(response)) {
-            response.forEach(item => {
+            if (response.length === 0) {
+                responseContainer.classList.add('error');
+                responseContainer.innerHTML = '<p>No Students found</p>';
+            } else {
+                response.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('response-container');
+                    Object.keys(item).forEach(key => {
+                        const propertyDiv = document.createElement('div');
+                        propertyDiv.textContent = `${key}: ${item[key]}`;
+                        itemDiv.appendChild(propertyDiv);
+                    });
+                    responseContainer.appendChild(itemDiv);
+                    responseContainer.innerHTML += '<hr>';
+                });
+            }
+        } else {
+            if (response && response.error) {
+                responseContainer.classList.add('error');
+                responseContainer.innerHTML = `<p>${errorMessage}: ${response.message}</p>`;
+            } else {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('response-container');
-                Object.keys(item).forEach(key => {
+                Object.keys(response).forEach(key => {
                     const propertyDiv = document.createElement('div');
-                    propertyDiv.textContent = `${key}: ${item[key]}`;
+                    propertyDiv.textContent = `${key}: ${response[key]}`;
                     itemDiv.appendChild(propertyDiv);
                 });
                 responseContainer.appendChild(itemDiv);
-                responseContainer.innerHTML += '<hr>';
-            });
-        } else {
-            const itemDiv = document.createElement('div');
-            itemDiv.classList.add('response-container');
-            Object.keys(response).forEach(key => {
-                const propertyDiv = document.createElement('div');
-                propertyDiv.textContent = `${key}: ${response[key]}`;
-                itemDiv.appendChild(propertyDiv);
-            });
-            responseContainer.appendChild(itemDiv);
-        }
 
-        if (successMessage && response && !response.error) {
-            responseContainer.classList.add('success');
-            responseContainer.innerHTML += `<p>${successMessage}</p>`;
-        } else if (errorMessage && response && response.error) {
-            responseContainer.classList.add('error');
-            responseContainer.innerHTML += `<p>${errorMessage}</p>`;
+                if (successMessage && response) {
+                    responseContainer.classList.add('success');
+                    responseContainer.innerHTML += `<p>${successMessage}</p>`;
+                }
+            }
         }
     }
 
@@ -180,7 +188,10 @@
     function deleteStudent() {
         const deleteId = document.getElementById('deleteId').value;
         makeRequest(`${baseURL}/${deleteId}`, 'DELETE')
-            .then(data => formatAndDisplayResponse(data, 'deleteStudentResponse', 'Student deleted successfully', 'Error deleting student'));
+            .then(
+                data => formatAndDisplayResponse(
+                    data, 'deleteStudentResponse', 'Student deleted successfully', 'Error deleting student')
+            );
     }
 
     function addNewStudent() {
