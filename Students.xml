@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<university>
+    <student ID="20200">
+        <address>address</address>
+        <firstName>firstname</firstName>
+        <gender>gender</gender>
+        <gpa>3.21</gpa>
+        <lastName>lastname</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200503">
+        <address>cairo</address>
+        <firstName>huss</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>nader</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200159">
+        <address>cairo</address>
+        <firstName>omar</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>joe</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200231">
+        <address>cairo</address>
+        <firstName>omar</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>usf</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200640">
+        <address>cairo</address>
+        <firstName>omar</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>usf</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200753">
+        <address>cairo</address>
+        <firstName>estkana</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>mohamed</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200123">
+        <address>cairo</address>
+        <firstName>nasr</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>ahmed</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200555">
+        <address>cairo</address>
+        <firstName>Ahmed</firstName>
+        <gender>male</gender>
+        <gpa>4.0</gpa>
+        <lastName>mohamed</lastName>
+        <level>4</level>
+    </student>
+</university>
