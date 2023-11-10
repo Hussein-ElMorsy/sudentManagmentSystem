@@ -215,6 +215,8 @@
 
         makeRequest(`${baseURL}/addStudents`, 'POST', [newStudent])
             .then(data => formatAndDisplayResponse(data, 'addStudentResponse', 'Student added successfully', 'Error adding student'));
+
+        location.reload();
     }
 </script>
 </body>

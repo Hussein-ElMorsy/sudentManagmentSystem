@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <university>
-    <student ID="654321">
-        <address>maday</address>
-        <firstName>fady</firstName>
-        <gender>male</gender>
-        <gpa>4.0</gpa>
-        <lastName>shady</lastName>
-        <level>4</level>
-    </student>
     <student ID="1234">
         <address>zayed</address>
         <firstName>shady</firstName>
@@ -31,5 +23,237 @@
         <gpa>3.14</gpa>
         <lastName>El-Morsy</lastName>
         <level>4</level>
+    </student>
+    <student ID="20200231">
+        <address>Cairo</address>
+        <firstName>Salma</firstName>
+        <gender>Female</gender>
+        <gpa>4.0</gpa>
+        <lastName>Hany</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200503">
+        <address>Cairo</address>
+        <firstName>Mahmoud</firstName>
+        <gender>Male</gender>
+        <gpa>3.3</gpa>
+        <lastName>Nader</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200753">
+        <address>Cairo</address>
+        <firstName>Mohamed</firstName>
+        <gender>Male</gender>
+        <gpa>3.0</gpa>
+        <lastName>Nasr</lastName>
+        <level>0</level>
+    </student>
+    <student ID="223423">
+        <address>dfg</address>
+        <firstName>dgdfsd</firstName>
+        <gender>dgsd</gender>
+        <gpa>3.0</gpa>
+        <lastName>dgsdgsd</lastName>
+        <level>1</level>
+    </student>
+    <student ID="1231">
+        <address>sdfsd</address>
+        <firstName>sdfsd</firstName>
+        <gender>dfgd</gender>
+        <gpa>1.0</gpa>
+        <lastName>dfgdf</lastName>
+        <level>2</level>
+    </student>
+    <student ID="12356">
+        <address>fsdf</address>
+        <firstName>sdfsd</firstName>
+        <gender>sdfsd</gender>
+        <gpa>5.0</gpa>
+        <lastName>sdfdf</lastName>
+        <level>2</level>
+    </student>
+    <student ID="12">
+        <address>sdfsd</address>
+        <firstName>sdf</firstName>
+        <gender>dsf</gender>
+        <gpa>2.0</gpa>
+        <lastName>sdfsd</lastName>
+        <level>3</level>
+    </student>
+    <student ID="555">
+        <address>sdfsd</address>
+        <firstName>sdf</firstName>
+        <gender>dgf</gender>
+        <gpa>1.0</gpa>
+        <lastName>sdfsd</lastName>
+        <level>3</level>
+    </student>
+    <student ID="1213245">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>sdf</gender>
+        <gpa>1.0</gpa>
+        <lastName>sdfsdf</lastName>
+        <level>3</level>
+    </student>
+    <student ID="111">
+        <address>sdf</address>
+        <firstName>wsdf</firstName>
+        <gender>sdf</gender>
+        <gpa>3.0</gpa>
+        <lastName>dsfsd</lastName>
+        <level>3</level>
+    </student>
+    <student ID="1213245234">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>dsf</gender>
+        <gpa>2.0</gpa>
+        <lastName>fdg</lastName>
+        <level>1</level>
+    </student>
+    <student ID="444">
+        <address>sdf</address>
+        <firstName>sd</firstName>
+        <gender>as</gender>
+        <gpa>1.0</gpa>
+        <lastName>asd</lastName>
+        <level>1</level>
+    </student>
+    <student ID="121324511">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>as</gender>
+        <gpa>1.0</gpa>
+        <lastName>sdfsdf</lastName>
+        <level>1</level>
+    </student>
+    <student ID="121324522">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>das</gender>
+        <gpa>1.0</gpa>
+        <lastName>fdg</lastName>
+        <level>1</level>
+    </student>
+    <student ID="4212">
+        <address>sss</address>
+        <firstName>wqeqw</firstName>
+        <gender>fsdsdf</gender>
+        <gpa>3.0</gpa>
+        <lastName>sdfsd</lastName>
+        <level>3</level>
+    </student>
+    <student ID="122123">
+        <address>saasd</address>
+        <firstName>sadsad</firstName>
+        <gender>asdas</gender>
+        <gpa>1.0</gpa>
+        <lastName>asdasda</lastName>
+        <level>1</level>
+    </student>
+    <student ID="12212344213">
+        <address>saasd</address>
+        <firstName>sadsad</firstName>
+        <gender>asdas</gender>
+        <gpa>1.0</gpa>
+        <lastName>asdasda</lastName>
+        <level>1</level>
+    </student>
+    <student ID="12132452234">
+        <address>sdfd</address>
+        <firstName>sdfs</firstName>
+        <gender>asdasd</gender>
+        <gpa>2.0</gpa>
+        <lastName>fdg</lastName>
+        <level>2</level>
+    </student>
+    <student ID="7777">
+        <address>Haram</address>
+        <firstName>asdgjn</firstName>
+        <gender>ddfagnj</gender>
+        <gpa>4.0</gpa>
+        <lastName>mjdsdf</lastName>
+        <level>4</level>
+    </student>
+    <student ID="666">
+        <address>Haram</address>
+        <firstName>gfhgfhf</firstName>
+        <gender>dgfdgjsv</gender>
+        <gpa>2.0</gpa>
+        <lastName>gfhgfhgf</lastName>
+        <level>1</level>
+    </student>
+    <student ID="121321">
+        <address>xffsdfs</address>
+        <firstName>sdfsdfsdfd</firstName>
+        <gender>sdfdsfsd</gender>
+        <gpa>2.0</gpa>
+        <lastName>sdfsdfsdfs</lastName>
+        <level>2</level>
+    </student>
+    <student ID="1213652">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>sdf</gender>
+        <gpa>1.0</gpa>
+        <lastName>fdg</lastName>
+        <level>1</level>
+    </student>
+    <student ID="123678323434">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>sdfsdfs</gender>
+        <gpa>1.0</gpa>
+        <lastName>sdfsdf</lastName>
+        <level>1</level>
+    </student>
+    <student ID="111222">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>dgfdgjsv</gender>
+        <gpa>1.0</gpa>
+        <lastName>fdg</lastName>
+        <level>3</level>
+    </student>
+    <student ID="121324512352">
+        <address>Haram</address>
+        <firstName>sdsf</firstName>
+        <gender>sdf</gender>
+        <gpa>2.0</gpa>
+        <lastName>sdfs</lastName>
+        <level>1</level>
+    </student>
+    <student ID="2312341">
+        <address>Haram</address>
+        <firstName>sdfs</firstName>
+        <gender>fdsfdf</gender>
+        <gpa>1.0</gpa>
+        <lastName>werwe</lastName>
+        <level>1</level>
+    </student>
+    <student ID="1213684234">
+        <address>Haram</address>
+        <firstName>sdsf</firstName>
+        <gender>asd</gender>
+        <gpa>1.0</gpa>
+        <lastName>fdg</lastName>
+        <level>1</level>
+    </student>
+    <student ID="214252">
+        <address></address>
+        <firstName>sdfs</firstName>
+        <gender>das</gender>
+        <gpa>1.0</gpa>
+        <lastName>sdfsdf</lastName>
+        <level>1</level>
+    </student>
+    <student ID="973435">
+        <address>Haram/Gizads</address>
+        <firstName>Hussein</firstName>
+        <gender>sdfsdf</gender>
+        <gpa>1.0</gpa>
+        <lastName>Mohamed</lastName>
+        <level>1</level>
     </student>
 </university>
