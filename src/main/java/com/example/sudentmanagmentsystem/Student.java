@@ -10,8 +10,8 @@ public class Student {
     private String firstName;
     private String lastName;
     private String gender;
-    private double gpa;
-    private int level;
+    private Double gpa;
+    private Integer level;
     private String address;
 
     @XmlAttribute(name = "ID")
@@ -47,19 +47,19 @@ public class Student {
         this.gender = gender;
     }
 
-    public double getGpa() {
+    public Double getGpa() {
         return gpa;
     }
 
-    public void setGpa(double gpa) {
+    public void setGpa(Double gpa) {
         this.gpa = gpa;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 

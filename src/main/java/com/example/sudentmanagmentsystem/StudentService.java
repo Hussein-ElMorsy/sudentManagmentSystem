@@ -7,12 +7,17 @@ public interface StudentService {
 
     Student getStudentById(String ID);
 
-    List<Student> getStudentsByGPA(double gpa);
+    ResponseList getStudentsByGPA(Double gpa);
 
     List<Student> getStudentsByFirstName(String firstName);
+    List<Student> getStudentsByLastName(String lastName);
+    List<Student> getStudentsByAddress(String address);
+    List<Student> getStudentsByGender(String gender);
+    List<Student> getStudentsByLevel(Integer level);
 
-    Boolean addStudent(Student student);
+    String  addStudent(Student student);
 
     Boolean deleteStudent(String ID);
+    List<String> updateStudent(Student student,String ID);
 }
 
