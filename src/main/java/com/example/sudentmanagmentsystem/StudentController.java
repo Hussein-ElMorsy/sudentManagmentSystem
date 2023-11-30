@@ -19,9 +19,8 @@ public class StudentController {
     }
 
     @GetMapping("/getAll/{sortingField}/{type}")
-    public List<Student> getAllStudents(@PathVariable String sortingField, @PathVariable String type) {
-
-        return studentService.getAllStudents(sortingField, type);
+    public List<Student> getAllStudents(@PathVariable String sortingField,@PathVariable String type) {
+        return studentService.getAllStudents(sortingField,type);
     }
 
     @GetMapping("/getByID/{ID}")
@@ -32,34 +31,43 @@ public class StudentController {
     @GetMapping("/getByGPA/{gpa}")
     public ResponseList getStudentsByGPA(@PathVariable Double gpa) {
         //  double gpa_double = Double.parseDouble(gpa);
-        return studentService.getStudentsByGPA(gpa);
+        List<Student> students = studentService.getStudentsByGPA(gpa);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
 
     @GetMapping("/getByFirstName/{firstName}")
-    public List<Student> getStudentsByFirstName(@PathVariable String firstName) {
-        return studentService.getStudentsByFirstName(firstName);
+    public ResponseList getStudentsByFirstName(@PathVariable String firstName) {
+        List<Student> students = studentService.getStudentsByFirstName(firstName);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
-
     @GetMapping("/getByLastName/{lastName}")
-    public List<Student> getStudentsByLastName(@PathVariable String lastName) {
-        return studentService.getStudentsByLastName(lastName);
+    public ResponseList getStudentsByLastName(@PathVariable String lastName) {
+        List<Student> students = studentService.getStudentsByLastName(lastName);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
-
     @GetMapping("/getByAddress/{address}")
-    public List<Student> getStudentsByAddress(@PathVariable String address) {
-        return studentService.getStudentsByAddress(address);
+    public ResponseList getStudentsByAddress(@PathVariable String address) {
+        List<Student> students = studentService.getStudentsByAddress(address);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
 
     @GetMapping("/getByGender/{gender}")
-    public List<Student> getStudentsByGender(@PathVariable String gender) {
-        return studentService.getStudentsByGender(gender);
+    public ResponseList getStudentsByGender(@PathVariable String gender) {
+        List<Student> students = studentService.getStudentsByGender(gender);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
 
     @GetMapping("/getByLevel/{level}")
-    public List<Student> getStudentsByLevel(@PathVariable Integer level) {
-        return studentService.getStudentsByLevel(level);
+    public ResponseList getStudentsByLevel(@PathVariable Integer level) {
+        List<Student> students = studentService.getStudentsByLevel(level);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
-
     @PostMapping("/addStudents")
     public ResponseEntity<List<String>> addMultipleStudents(@RequestBody List<Student> students) {
         List<String> message = new ArrayList<>();
@@ -82,7 +90,9 @@ public class StudentController {
 
     @PatchMapping("/{ID}")
     public List<String> updateStudent(@RequestBody Student student, @PathVariable String ID) {
-        return studentService.updateStudent(student, ID);
+        return studentService.updateStudent(student,ID) ;
 
     }
+
+
 }

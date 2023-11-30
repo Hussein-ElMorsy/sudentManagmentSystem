@@ -11,7 +11,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -29,9 +28,7 @@ public class StudentServiceImpl implements StudentService {
             try {
                 JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
                 University university = (University) jaxbContext.createUnmarshaller().unmarshal(xmlFile);
-
                 students = university.getStudents();
-                System.out.println(453333566);
             } catch (JAXBException e) {
                 e.printStackTrace();
             }
@@ -45,21 +42,115 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getAllStudents(String sortingField, String type) {
-        if (Objects.equals(sortingField, "id")) {
-            for (int studI = 0; studI < students.size(); studI++) {
-                for (int studJ = studI + 1; studJ < students.size(); studJ++) {
-                    if (students.get(studI).id.compareTo(students.get(studJ).id) > 0) {
-                        if (Objects.equals(type, "desc")) {
-                            continue;
+    public List<Student> getAllStudents(String sortingField,String type) {
+        if(sortingField.equals("id")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                   if(type.equals("asc")){
+                       if(students.get(i).getId().compareTo(students.get(j).getId()) > 0){
+                           Collections.swap(students,i,j);
+                       }
+                   }else{
+                       if(students.get(i).getId().compareTo(students.get(j).getId()) < 0){
+                           Collections.swap(students,i,j);
+                       }
+                   }
+                }
+            }
+        }
+        if(sortingField.equals("lastName")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getLastName().compareTo(students.get(j).getLastName()) > 0){
+                            Collections.swap(students,i,j);
                         }
-                        Collections.swap(students, studI, studJ);
+                    }else{
+                        if(students.get(i).getLastName().compareTo(students.get(j).getLastName()) < 0){
+                            Collections.swap(students,i,j);
+                        }
                     }
                 }
             }
         }
-        System.out.println("555555555555555555555555555555555555555555555");
-        System.out.println(students.size());
+        if(sortingField.equals("firstName")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) > 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }else{
+                        if(students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) < 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }
+                }
+            }
+        }
+        if(sortingField.equals("address")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getAddress().compareTo(students.get(j).getAddress()) > 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }else{
+                        if(students.get(i).getAddress().compareTo(students.get(j).getAddress()) < 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }
+                }
+            }
+        }
+        if(sortingField.equals("gender")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getGender().compareTo(students.get(j).getGender()) > 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }else{
+                        if(students.get(i).getGender().compareTo(students.get(j).getGender()) < 0){
+                            Collections.swap(students,i,j);
+                        }
+                    }
+                }
+            }
+        }
+
+        if(sortingField.equals("gpa")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getGpa() > students.get(j).getGpa()){
+                            Collections.swap(students,i,j);
+                        }
+                    }else{
+                        if(students.get(i).getGpa() < students.get(j).getGpa()){
+                            Collections.swap(students,i,j);
+                        }
+                    }
+                }
+            }
+        }
+        if(sortingField.equals("level")){
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i+1;j<students.size();j++){
+                    if(type.equals("asc")){
+                        if(students.get(i).getLevel() > students.get(j).getLevel()){
+                            Collections.swap(students,i,j);
+                        }
+                    }else{
+                        if(students.get(i).getLevel() < students.get(j).getLevel()){
+                            Collections.swap(students,i,j);
+                        }
+                    }
+                }
+            }
+        }
+
+
         saveToXML();
         return students;
     }
@@ -74,13 +165,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public ResponseList getStudentsByGPA(Double gpa) {
+    public List<Student> getStudentsByGPA(Double gpa) {
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
             if (stud.getGpa().equals(gpa))
                 foundStud.add(stud);
         }
-        return new ResponseList(foundStud);
+        return foundStud;
     }
 
     @Override
@@ -102,7 +193,6 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
-
     @Override
     public List<Student> getStudentsByAddress(String address) {
         List<Student> foundStud = new ArrayList<>();
@@ -112,7 +202,6 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
-
     @Override
     public List<Student> getStudentsByGender(String gender) {
         List<Student> foundStud = new ArrayList<>();
@@ -122,12 +211,11 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
-
     @Override
     public List<Student> getStudentsByLevel(Integer level) {
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
-            if (stud.getLevel() == level)
+            if (stud.getLevel()==level)
                 foundStud.add(stud);
         }
         return foundStud;
@@ -163,6 +251,12 @@ public class StudentServiceImpl implements StudentService {
                 return "Cannot Add student with duplicated ID.";
             }
         }
+
+        student.setGender(student.getGender().toLowerCase());
+        student.setFirstName(student.getFirstName().toLowerCase());
+        student.setLastName(student.getLastName().toLowerCase());
+        student.setAddress(student.getAddress().toLowerCase());
+        System.out.println(student.getFirstName());
         if (students.add(student)) {
             saveToXML();
             System.out.println(students);
@@ -183,6 +277,7 @@ public class StudentServiceImpl implements StudentService {
         }
         return false;
     }
+
 
     @Override
     public List<String> updateStudent(Student student, String ID) {
@@ -214,7 +309,7 @@ public class StudentServiceImpl implements StudentService {
                 }
                 if (student.getGender() != null) {
                     if (ok == 1) {
-                        stud.setGender(student.getGender());
+                        stud.setGender(student.getGender().toLowerCase());
                     }
                 }
                 if (student.getLastName() != null) {
@@ -222,7 +317,7 @@ public class StudentServiceImpl implements StudentService {
                         ok = 0;
                         message.add("Last Name should be alphabetic.");
                     } else if (ok == 1) {
-                        stud.setLastName(student.getLastName());
+                        stud.setLastName(student.getLastName().toLowerCase());
                     }
                 }
                 if (student.getFirstName() != null) {
@@ -230,16 +325,15 @@ public class StudentServiceImpl implements StudentService {
                         ok = 0;
                         message.add("First Name should be alphabetic.");
                     } else if (ok == 1) {
-                        stud.setFirstName(student.getFirstName());
+                        stud.setFirstName(student.getFirstName().toLowerCase());
                     }
-
                 }
                 if (student.getAddress() != null) {
                     if (!student.getAddress().matches(pattern)) {
                         ok = 0;
                         message.add("Address should be alphabetic.");
                     } else if (ok == 1) {
-                        stud.setAddress(student.getAddress());
+                        stud.setAddress(student.getAddress().toLowerCase());
                     }
                 }
                 if (ok == 1) {
