@@ -6,13 +6,13 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Student")
 public class Student {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private Double gpa;
-    private Integer level;
-    private String address;
+    public String id;
+    public String firstName;
+    public String lastName;
+    public String gender;
+    public Double gpa;
+    public Integer level;
+    public String address;
 
     @XmlAttribute(name = "ID")
     public String getId() {

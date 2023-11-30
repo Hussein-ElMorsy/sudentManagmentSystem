@@ -9,7 +9,9 @@ import jakarta.xml.bind.Marshaller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -27,7 +29,9 @@ public class StudentServiceImpl implements StudentService {
             try {
                 JAXBContext jaxbContext = JAXBContext.newInstance(University.class);
                 University university = (University) jaxbContext.createUnmarshaller().unmarshal(xmlFile);
+
                 students = university.getStudents();
+                System.out.println(453333566);
             } catch (JAXBException e) {
                 e.printStackTrace();
             }
@@ -41,7 +45,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> getAllStudents(String sortingField, String type) {
+        if (Objects.equals(sortingField, "id")) {
+            for (int studI = 0; studI < students.size(); studI++) {
+                for (int studJ = studI + 1; studJ < students.size(); studJ++) {
+                    if (students.get(studI).id.compareTo(students.get(studJ).id) > 0) {
+                        if (Objects.equals(type, "desc")) {
+                            continue;
+                        }
+                        Collections.swap(students, studI, studJ);
+                    }
+                }
+            }
+        }
+        System.out.println("555555555555555555555555555555555555555555555");
+        System.out.println(students.size());
+        saveToXML();
         return students;
     }
 
@@ -83,6 +102,7 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByAddress(String address) {
         List<Student> foundStud = new ArrayList<>();
@@ -92,6 +112,7 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByGender(String gender) {
         List<Student> foundStud = new ArrayList<>();
@@ -101,11 +122,12 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByLevel(Integer level) {
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
-            if (stud.getLevel()==level)
+            if (stud.getLevel() == level)
                 foundStud.add(stud);
         }
         return foundStud;
@@ -164,81 +186,67 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<String> updateStudent(Student student, String ID) {
-//        Integer ok = 1;
-//        if (student.getId() != null) {
-//            return "updating ID is not valid.";
-//        }
-//        if (student.getGpa() != null && (student.getGpa() < 0.0 || student.getGpa() > 4.0)) {
-//            return "GPA should be between (0.0-4.0)";
-//        }
-//
-//        if (student.getLevel() != null && student.getLevel() < 0) {
-//            return "Level cannot be negative.";
-//        }
+        Integer ok = 1;
         List<String> message = new ArrayList<>();
         String pattern = "^[a-zA-Z]+$";
-//        if ((student.getAddress() != null || student.getFirstName() != null || student.getLastName() != null) &&
-//                (!(student.getAddress().matches(pattern) && student.getFirstName().matches(pattern) && student.getLastName().matches(pattern)))) {
-//            return "Address, FirstName and LastName should be alphabetic.";
-//        }
-//        if (student.getAddress() != null && !student.getAddress().matches(pattern))
-//            return "Address should be alphabetic.";
-//        if (student.getLastName() != null && !student.getLastName().matches(pattern))
-//            return "Last Name should be alphabetic.";
-//        if (student.getFirstName() != null && !student.getFirstName().matches(pattern))
-//            return "First Name should be alphabetic.";
 
-
+        if (student.getId() != null) {
+            ok = 0;
+            message.add("Updating ID is not valid.");
+        }
         for (Student stud : students) {
             if (stud.getId().equals(ID)) {
-                if(student.getGpa()!=null){
-                    if(student.getGpa()<0.0 || student.getGpa()>4.0){
-                        message.add( "GPA should be between (0.0-4.0)");
-                    }else{
+                if (student.getGpa() != null) {
+                    if (student.getGpa() < 0.0 || student.getGpa() > 4.0) {
+                        ok = 0;
+                        message.add("GPA should be between (0.0-4.0)");
+                    } else if (ok == 1) {
                         stud.setGpa(student.getGpa());
-                        message.add("GPA Updated successfully");
                     }
                 }
-                if(student.getLevel()!=null){
-                    if(student.getLevel() < 0){
+                if (student.getLevel() != null) {
+                    if (student.getLevel() < 0) {
+                        ok = 0;
                         message.add("Level cannot be negative.");
-                    }else{
+                    } else if (ok == 1) {
                         stud.setLevel(student.getLevel());
-                        message.add("Level Updated successfully");
                     }
                 }
-                if(student.getGender()!=null){
-                    stud.setGender(student.getGender());
-                    message.add("Gender Updated successfully");
+                if (student.getGender() != null) {
+                    if (ok == 1) {
+                        stud.setGender(student.getGender());
+                    }
                 }
-                if(student.getLastName()!=null){
-                    if(!student.getLastName().matches(pattern)){
+                if (student.getLastName() != null) {
+                    if (!student.getLastName().matches(pattern)) {
+                        ok = 0;
                         message.add("Last Name should be alphabetic.");
-                    }else{
-                     stud.setLastName(student.getLastName());
-                     message.add("Last Name updated successfully");
+                    } else if (ok == 1) {
+                        stud.setLastName(student.getLastName());
                     }
                 }
-                if(student.getFirstName()!=null){
-                    if(!student.getFirstName().matches(pattern)){
+                if (student.getFirstName() != null) {
+                    if (!student.getFirstName().matches(pattern)) {
+                        ok = 0;
                         message.add("First Name should be alphabetic.");
-                    }else{
+                    } else if (ok == 1) {
                         stud.setFirstName(student.getFirstName());
-                        message.add("First Name Updated successfully.");
                     }
 
                 }
-                if(student.getAddress()!=null){
-                    if(!student.getAddress().matches(pattern)){
-                        message.add("address should be alphabetic.");
-                    }else{
+                if (student.getAddress() != null) {
+                    if (!student.getAddress().matches(pattern)) {
+                        ok = 0;
+                        message.add("Address should be alphabetic.");
+                    } else if (ok == 1) {
                         stud.setAddress(student.getAddress());
-                        message.add("address uodated successfully.");
                     }
-
                 }
-                saveToXML();
+                if (ok == 1) {
+                    message.add("Updated successfully.");
+                }
 
+                saveToXML();
             }
         }
         return message;

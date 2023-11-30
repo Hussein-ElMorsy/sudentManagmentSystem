@@ -8,10 +8,12 @@ import java.util.List;
 @XmlRootElement
 public class University {
     private List<Student> students;
+
     @XmlElement(name = "student")
     public List<Student> getStudents() {
         return students;
     }
+
     public void setStudents(List<Student> students) {
         this.students = students;
     }

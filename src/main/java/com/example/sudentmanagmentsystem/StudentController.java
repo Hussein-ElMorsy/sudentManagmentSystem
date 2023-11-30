@@ -18,9 +18,10 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
-    public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+    @GetMapping("/getAll/{sortingField}/{type}")
+    public List<Student> getAllStudents(@PathVariable String sortingField, @PathVariable String type) {
+
+        return studentService.getAllStudents(sortingField, type);
     }
 
     @GetMapping("/getByID/{ID}")
@@ -38,10 +39,12 @@ public class StudentController {
     public List<Student> getStudentsByFirstName(@PathVariable String firstName) {
         return studentService.getStudentsByFirstName(firstName);
     }
+
     @GetMapping("/getByLastName/{lastName}")
     public List<Student> getStudentsByLastName(@PathVariable String lastName) {
         return studentService.getStudentsByLastName(lastName);
     }
+
     @GetMapping("/getByAddress/{address}")
     public List<Student> getStudentsByAddress(@PathVariable String address) {
         return studentService.getStudentsByAddress(address);
@@ -56,6 +59,7 @@ public class StudentController {
     public List<Student> getStudentsByLevel(@PathVariable Integer level) {
         return studentService.getStudentsByLevel(level);
     }
+
     @PostMapping("/addStudents")
     public ResponseEntity<List<String>> addMultipleStudents(@RequestBody List<Student> students) {
         List<String> message = new ArrayList<>();
@@ -78,7 +82,7 @@ public class StudentController {
 
     @PatchMapping("/{ID}")
     public List<String> updateStudent(@RequestBody Student student, @PathVariable String ID) {
-        return studentService.updateStudent(student,ID) ;
+        return studentService.updateStudent(student, ID);
 
     }
 }
