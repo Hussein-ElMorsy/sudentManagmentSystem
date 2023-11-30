@@ -19,8 +19,10 @@ public class StudentController {
     }
 
     @GetMapping("/getAll/{sortingField}/{type}")
-    public List<Student> getAllStudents(@PathVariable String sortingField,@PathVariable String type) {
-        return studentService.getAllStudents(sortingField,type);
+    public ResponseList getAllStudents(@PathVariable String sortingField, @PathVariable String type) {
+        List<Student> students = studentService.getAllStudents(sortingField, type);
+        ResponseList response = new ResponseList(students);
+        return response;
     }
 
     @GetMapping("/getByID/{ID}")
@@ -42,12 +44,14 @@ public class StudentController {
         ResponseList response = new ResponseList(students);
         return response;
     }
+
     @GetMapping("/getByLastName/{lastName}")
     public ResponseList getStudentsByLastName(@PathVariable String lastName) {
         List<Student> students = studentService.getStudentsByLastName(lastName);
         ResponseList response = new ResponseList(students);
         return response;
     }
+
     @GetMapping("/getByAddress/{address}")
     public ResponseList getStudentsByAddress(@PathVariable String address) {
         List<Student> students = studentService.getStudentsByAddress(address);
@@ -68,6 +72,7 @@ public class StudentController {
         ResponseList response = new ResponseList(students);
         return response;
     }
+
     @PostMapping("/addStudents")
     public ResponseEntity<List<String>> addMultipleStudents(@RequestBody List<Student> students) {
         List<String> message = new ArrayList<>();
@@ -90,7 +95,7 @@ public class StudentController {
 
     @PatchMapping("/{ID}")
     public List<String> updateStudent(@RequestBody Student student, @PathVariable String ID) {
-        return studentService.updateStudent(student,ID) ;
+        return studentService.updateStudent(student, ID);
 
     }
 

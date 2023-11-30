@@ -42,108 +42,109 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getAllStudents(String sortingField,String type) {
-        if(sortingField.equals("id")){
+    public List<Student> getAllStudents(String sortingField, String type) {
+        if (sortingField.equals("id")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                   if(type.equals("asc")){
-                       if(students.get(i).getId().compareTo(students.get(j).getId()) > 0){
-                           Collections.swap(students,i,j);
-                       }
-                   }else{
-                       if(students.get(i).getId().compareTo(students.get(j).getId()) < 0){
-                           Collections.swap(students,i,j);
-                       }
-                   }
-                }
-            }
-        }
-        if(sortingField.equals("lastName")){
-            for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getLastName().compareTo(students.get(j).getLastName()) > 0){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+
+                        if (Integer.parseInt(students.get(i).getId()) > Integer.parseInt(students.get(j).getId())) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getLastName().compareTo(students.get(j).getLastName()) < 0){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (Integer.parseInt(students.get(i).getId()) < Integer.parseInt(students.get(j).getId())) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
             }
         }
-        if(sortingField.equals("firstName")){
+        if (sortingField.equals("lastName")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) > 0){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getLastName().compareTo(students.get(j).getLastName()) > 0) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) < 0){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (students.get(i).getLastName().compareTo(students.get(j).getLastName()) < 0) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
             }
         }
-        if(sortingField.equals("address")){
+        if (sortingField.equals("firstName")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getAddress().compareTo(students.get(j).getAddress()) > 0){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) > 0) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getAddress().compareTo(students.get(j).getAddress()) < 0){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (students.get(i).getFirstName().compareTo(students.get(j).getFirstName()) < 0) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
             }
         }
-        if(sortingField.equals("gender")){
+        if (sortingField.equals("address")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getGender().compareTo(students.get(j).getGender()) > 0){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getAddress().compareTo(students.get(j).getAddress()) > 0) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getGender().compareTo(students.get(j).getGender()) < 0){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (students.get(i).getAddress().compareTo(students.get(j).getAddress()) < 0) {
+                            Collections.swap(students, i, j);
+                        }
+                    }
+                }
+            }
+        }
+        if (sortingField.equals("gender")) {
+            for (int i = 0; i < students.size(); i++) {
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getGender().compareTo(students.get(j).getGender()) > 0) {
+                            Collections.swap(students, i, j);
+                        }
+                    } else {
+                        if (students.get(i).getGender().compareTo(students.get(j).getGender()) < 0) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
             }
         }
 
-        if(sortingField.equals("gpa")){
+        if (sortingField.equals("gpa")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getGpa() > students.get(j).getGpa()){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getGpa() > students.get(j).getGpa()) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getGpa() < students.get(j).getGpa()){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (students.get(i).getGpa() < students.get(j).getGpa()) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
             }
         }
-        if(sortingField.equals("level")){
+        if (sortingField.equals("level")) {
             for (int i = 0; i < students.size(); i++) {
-                for (int j = i+1;j<students.size();j++){
-                    if(type.equals("asc")){
-                        if(students.get(i).getLevel() > students.get(j).getLevel()){
-                            Collections.swap(students,i,j);
+                for (int j = i + 1; j < students.size(); j++) {
+                    if (type.equals("asc")) {
+                        if (students.get(i).getLevel() > students.get(j).getLevel()) {
+                            Collections.swap(students, i, j);
                         }
-                    }else{
-                        if(students.get(i).getLevel() < students.get(j).getLevel()){
-                            Collections.swap(students,i,j);
+                    } else {
+                        if (students.get(i).getLevel() < students.get(j).getLevel()) {
+                            Collections.swap(students, i, j);
                         }
                     }
                 }
@@ -176,6 +177,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getStudentsByFirstName(String firstName) {
+        firstName = firstName.toLowerCase();
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
             if (stud.getFirstName().equals(firstName))
@@ -186,6 +188,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getStudentsByLastName(String lastName) {
+        lastName = lastName.toLowerCase();
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
             if (stud.getLastName().equals(lastName))
@@ -193,8 +196,10 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByAddress(String address) {
+        address = address.toLowerCase();
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
             if (stud.getAddress().equals(address))
@@ -202,8 +207,10 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByGender(String gender) {
+        gender = gender.toLowerCase();
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
             if (stud.getGender().equals(gender))
@@ -211,11 +218,12 @@ public class StudentServiceImpl implements StudentService {
         }
         return foundStud;
     }
+
     @Override
     public List<Student> getStudentsByLevel(Integer level) {
         List<Student> foundStud = new ArrayList<>();
         for (Student stud : students) {
-            if (stud.getLevel()==level)
+            if (stud.getLevel() == level)
                 foundStud.add(stud);
         }
         return foundStud;

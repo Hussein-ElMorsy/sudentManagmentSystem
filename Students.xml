@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <university>
-    <student ID="7">
-        <address>Giza</address>
-        <firstName>XD</firstName>
-        <gender>female</gender>
-        <gpa>3.0</gpa>
-        <lastName>ssh</lastName>
-        <level>3</level>
-    </student>
     <student ID="4">
         <address>Giza</address>
         <firstName>nader</firstName>
         <gender>male</gender>
         <gpa>3.2</gpa>
         <lastName>Mahmoud</lastName>
+        <level>4</level>
+    </student>
+    <student ID="5">
+        <address>Giza</address>
+        <firstName>usf</firstName>
+        <gender>male</gender>
+        <gpa>3.0</gpa>
+        <lastName>ssh</lastName>
         <level>4</level>
     </student>
     <student ID="6">
@@ -24,21 +24,13 @@
         <lastName>ssh</lastName>
         <level>4</level>
     </student>
-    <student ID="20200200">
-        <address>giza</address>
-        <firstName>mahmoud</firstName>
-        <gender>male</gender>
-        <gpa>3.4</gpa>
-        <lastName>nader</lastName>
-        <level>4</level>
-    </student>
-    <student ID="5">
+    <student ID="7">
         <address>Giza</address>
-        <firstName>usf</firstName>
-        <gender>male</gender>
+        <firstName>XD</firstName>
+        <gender>female</gender>
         <gpa>3.0</gpa>
         <lastName>ssh</lastName>
-        <level>4</level>
+        <level>3</level>
     </student>
     <student ID="20200">
         <address>GIZA</address>
@@ -57,6 +49,14 @@
         <level>4</level>
     </student>
     <student ID="555555">
+        <address>giza</address>
+        <firstName>mahmoud</firstName>
+        <gender>male</gender>
+        <gpa>3.4</gpa>
+        <lastName>nader</lastName>
+        <level>4</level>
+    </student>
+    <student ID="20200200">
         <address>giza</address>
         <firstName>mahmoud</firstName>
         <gender>male</gender>
